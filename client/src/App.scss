@@ -1,0 +1,20 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+h1 {
+  font-weight: bold;
+}
+
+.App {
+  &__list {
+    color: black;
+    font-size: 18px;
+  }
+  &__btn {
+    background-color: white;
+    color: black;
+  }
+}
