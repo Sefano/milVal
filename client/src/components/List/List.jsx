@@ -117,7 +117,8 @@ const List = () => {
 
   const handleResetImems = () => {
     resetItems();
-    window.location.reload();
+    setTimeout(() => window.location.reload(), 700);
+    // window.location.reload();
   };
 
   return (
