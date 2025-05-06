@@ -1,5 +1,6 @@
 {
   "name": "server",
+  "homepage": "http://sefano.github.io/milVal/",
   "version": "1.0.0",
   "main": "index.js",
   "type": "module",
