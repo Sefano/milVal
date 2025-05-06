@@ -1,5 +1,8 @@
-import express from "express";
-import cors from "cors";
+// import express from "express";
+// import cors from "cors";
+
+const express = require("express");
+const cors = require("cors");
 
 const app = express();
 const port = 7777;
@@ -23,7 +26,9 @@ const generateItems = () => {
 
 let items = generateItems();
 let customOrder = null;
-
+app.get("/", (req, res) => {
+  res.json("HELLO");
+});
 // Получение элементов
 app.get("/api/items", (req, res) => {
   const { page = 1, search = "" } = req.query;
@@ -89,14 +94,15 @@ app.post("/api/items/clear", (req, res) => {
   res.json({ success: true });
 });
 
-const start = () => {
-  try {
-    app.listen(port, () => {
-      console.log(`Сервер запущен на порту ${port}`);
-    });
-  } catch (error) {
-    console.log(error);
-  }
-};
+app.listen(port, () => console.log(`Сервер запущен на порту ${port}`));
+// const start = () => {
+//   try {
+//     app.listen(port, () => {
+//       console.log(`Сервер запущен на порту ${port}`);
+//     });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
-start();
+// start();
