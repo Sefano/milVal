@@ -24,6 +24,7 @@ import { Item } from "../Item/Item";
 import { SearchInput } from "../SearchInput/SearchImput";
 
 import { fetchItems, pinItem, reorderItems, resetItems } from "../../api/api";
+import { useDebounce } from "../../hooks/useDebounce";
 
 const List = () => {
   const [search, setSearch] = useState("");
@@ -32,6 +33,8 @@ const List = () => {
   const handleSearchChange = (e) => {
     setSearch(e.target.value);
   };
+
+  const searchDebounce = useDebounce(search, 500);
 
   const queryClient = useQueryClient();
 
@@ -43,7 +46,7 @@ const List = () => {
     isLoading,
     isError,
   } = useInfiniteQuery({
-    queryKey: ["items", search],
+    queryKey: ["items", searchDebounce],
     queryFn: fetchItems,
     getNextPageParam: (lastPage, pages) => {
       if (lastPage.items.length < 20) return undefined;
