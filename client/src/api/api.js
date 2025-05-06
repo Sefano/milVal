@@ -1,20 +1,25 @@
 export const fetchItems = async ({ pageParam = 1, queryKey }) => {
   const [, search] = queryKey;
   const response = await fetch(
-    `http://localhost:7777/api/items?page=${pageParam}&search=${search || ""}`
+    `https://mil-val.vercel.app/api/items?page=${pageParam}&search=${
+      search || ""
+    }`
   );
   return response.json();
 };
 
 export const pinItem = async (id) => {
-  const response = await fetch(`http://localhost:7777/api/items/${id}/pin`, {
-    method: "POST",
-  });
+  const response = await fetch(
+    `https://mil-val.vercel.app/api/items/${id}/pin`,
+    {
+      method: "POST",
+    }
+  );
   return response.json();
 };
 
 export const reorderItems = async (orderedIds) => {
-  const response = await fetch("http://localhost:7777/api/items/reorder", {
+  const response = await fetch("https://mil-val.vercel.app/api/items/reorder", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -25,7 +30,7 @@ export const reorderItems = async (orderedIds) => {
 };
 
 export const resetItems = async () => {
-  const response = await fetch("http://localhost:7777/api/items/clear", {
+  const response = await fetch("https://mil-val.vercel.app/api/items/clear", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
