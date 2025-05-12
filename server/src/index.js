@@ -25,7 +25,9 @@ const generateItems = () => {
 };
 
 let items = generateItems();
+
 let customOrder = null;
+
 app.get("/", (req, res) => {
   res.json("HELLO");
 });
@@ -43,11 +45,7 @@ app.get("/api/items", (req, res) => {
   }
 
   // Сортировка
-  filteredItems.sort((a, b) => {
-    if (a.pinned && !b.pinned) return -1;
-    if (!a.pinned && b.pinned) return 1;
-    return a.order - b.order;
-  });
+  filteredItems.sort((a, b) => a.order - b.order);
 
   // Пагинация
   const startIndex = (page - 1) * perPage;
